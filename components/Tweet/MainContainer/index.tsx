@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { TweetType } from "../../../types";
 import styles from "./styles";
 import { Entypo } from "@expo/vector-icons";
+import moment from 'moment'
 
 import Footer from './Footer/index'
 
@@ -18,10 +19,10 @@ const MainContainer = ({ tweet }: MainContainerProps) => {
         <View style={styles.tweetHeaderNames}>
           <Text style={styles.name}>{tweet.user.name}</Text>
           <Text style={styles.userName}>@{tweet.user.userName}</Text>
-          <Text style={styles.createdAt}>15s</Text>
+          <Text style={styles.createdAt}>{moment(tweet.createdAt).fromNow()}</Text>
         </View>
         <Entypo
-        
+        style={{position:'absolute', right:0, }}
           name={"chevron-down"}
           size={16}
           color={"grey"}

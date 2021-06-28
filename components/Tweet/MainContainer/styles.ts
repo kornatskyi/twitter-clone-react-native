@@ -4,14 +4,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginHorizontal:10,
+    
 
   },
   tweetHeaderContainer: {
     flexDirection: "row",
-    justifyContent:'space-between'
+    justifyContent:'space-between',
+    
   },
   tweetHeaderNames: {
-   flexDirection:'row'
+   flexDirection:'row',
+   flexWrap:'wrap',
+   marginRight:16,
+
+
+   
   },
   name: {
     fontWeight: "bold",

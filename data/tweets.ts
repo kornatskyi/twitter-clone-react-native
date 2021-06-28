@@ -8,7 +8,7 @@ const tweets = [
       image:
         "https://lh3.googleusercontent.com/ogw/ADea4I7I63F88WWUyN07qmDo1HfXsZUn8NiAFUAye1v2=s32-c-mo",
     },
-    createdAt: "2020-08-27T12:00:00.000Z",
+    createdAt: "2021-06-25T12:00:00.000Z",
     content:
       "What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book it has?",
     image:
