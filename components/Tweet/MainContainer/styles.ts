@@ -33,10 +33,11 @@ const styles = StyleSheet.create({
     color: "grey",
   },
   content: {
+    margin:5,
       lineHeight:18,
   },
   image: {
-    marginVertical:10,
+    marginVertical:5,
     width: '100%',
     height:150,
     resizeMode:"cover",
