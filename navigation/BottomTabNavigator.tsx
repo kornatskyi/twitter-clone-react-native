@@ -3,10 +3,11 @@
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
 
+import React, { useEffect, useState } from "react";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import * as React from "react";
+import { API, Auth, graphqlOperation } from "aws-amplify";
 
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
@@ -18,6 +19,7 @@ import {
   TabTwoParamList,
 } from "../types";
 import ProfilePicture from "../components/ProfilePicture";
+import { getUser } from "../src/graphql/queries";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -86,38 +88,60 @@ function TabBarIcon(props: {
 const TabOneStack = createStackNavigator<HomeNavigatorParamList>();
 
 function HomeNavigator() {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    //get the current user
+    const fetchUser = async () => {
+      const userInfo = await Auth.currentAuthenticatedUser({
+        bypassCache: true,
+      });
+      if (!userInfo) {
+        return;
+      }
+
+      try {
+        const userData = await API.graphql(
+          graphqlOperation(getUser, { id: userInfo.attributes.sub })
+        );
+        if (userData) {
+          setUser(userData.data.getUser);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fetchUser();
+  }, []);
+
   return (
     <TabOneStack.Navigator>
       <TabOneStack.Screen
         name="HomeScreen"
         component={TabOneScreen}
         options={{
-          
           headerTitle: () => (
             <Ionicons
               name={"logo-twitter"}
               size={30}
               color={Colors.light.tint}
-         
             />
           ),
-          headerTitleAlign: 'center',
+          headerTitleAlign: "center",
           headerRight: () => (
             <MaterialCommunityIcons
-            name={"star-four-points-outline"}
-            size={30}
-            color={Colors.light.tint}
-          />
+              name={"star-four-points-outline"}
+              size={30}
+              t
+              color={Colors.light.tint}
+            />
           ),
           headerRightContainerStyle: {
-            marginRight: 15
+            marginRight: 15,
           },
-          headerLeft: () => (
-            <ProfilePicture size={40}  image={'https://lh3.googleusercontent.com/ogw/ADea4I7I63F88WWUyN07qmDo1HfXsZUn8NiAFUAye1v2=s32-c-mo'}/>
-            ),
-            headerLeftContainerStyle: {
-              marginLeft: 15
-            },
+          headerLeft: () => <ProfilePicture size={40} image={user?.image} />,
+          headerLeftContainerStyle: {
+            marginLeft: 15,
+          },
         }}
       />
     </TabOneStack.Navigator>
