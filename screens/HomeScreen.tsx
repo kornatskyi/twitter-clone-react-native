@@ -3,15 +3,18 @@ import { StyleSheet } from "react-native";
 
 import EditScreenInfo from "../components/EditScreenInfo";
 import { Text, View } from "../components/Themed";
-
 import Feed from "../components/Feed";
 import tweets from "../data/tweets";
+import NewTweetButton from "../components/NewTweetButton";
+
 
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
     <Feed />
+    <NewTweetButton/>
     </View>
+
   );
 }
 
