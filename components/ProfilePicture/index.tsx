@@ -9,7 +9,11 @@ export type ProfilePictureProps = {
 
 const ProfilePicture = ({ image, size = 50 }: ProfilePictureProps) => (
   <Image
-    source={{ uri: image || "" }}
+    source={{
+      uri:
+        image ||
+        null,
+    }}
     style={{
       width: size,
       height: size,

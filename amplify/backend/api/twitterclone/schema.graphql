@@ -14,5 +14,3 @@ type Tweet @model @key(name: "byUser", fields: ["userID"]) {
   userID: ID!
   user: User @connection(fields: ["userID"])
 }
-
-

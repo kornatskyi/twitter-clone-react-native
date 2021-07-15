@@ -95,6 +95,7 @@ function HomeNavigator() {
       const userInfo = await Auth.currentAuthenticatedUser({
         bypassCache: true,
       });
+
       if (!userInfo) {
         return;
       }
@@ -107,7 +108,8 @@ function HomeNavigator() {
           setUser(userData.data.getUser);
         }
       } catch (e) {
-        console.log(e);
+        console.error("⚠  ~ e " , e)
+
       }
     };
     fetchUser();

@@ -13,7 +13,12 @@ import { getUser } from "./src/graphql/queries";
 import { createUser } from "./src/graphql/mutations";
 import { CreateUserInput } from "./src/API";
 
-Amplify.configure(config);
+Amplify.configure({
+  ...config,
+  Analytics: {
+    disabled: true,
+  },
+});
 
 function App() {
   const isLoadingComplete = useCachedResources();

@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "tweeterclone275d201d_identitypool_275d201d",
+    "identityPoolName": "twittercloneac398a53_identitypool_ac398a53",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "tweete275d201d",
-    "userPoolName": "tweeterclone275d201d_userpool_275d201d",
+    "resourceNameTruncated": "twitteac398a53",
+    "userPoolName": "twittercloneac398a53_userpool_ac398a53",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,10 +28,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "tweete275d201d_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "twitteac398a53_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "275d201d",
-    "resourceName": "tweeterclone275d201d",
+    "sharedId": "ac398a53",
+    "resourceName": "twittercloneac398a53",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
